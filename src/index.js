@@ -10,7 +10,7 @@ const FizzBuzz = {
         vnode.state.updateText = () => {
             const number = numberStore.getNumber();
 
-            let text = '';
+            let text;
 
             if (number % 3 === 0 && number % 5 === 0) {
                 text = 'Fizzbuzz';
@@ -18,9 +18,11 @@ const FizzBuzz = {
                 text = 'Fizz';
             } else if (number % 5 === 0) {
                 text = 'Buzz';
+            } else {
+                text = '';
             }
 
-            if (text && text !== vnode.state.text) {
+            if (text !== vnode.state.text) {
                 vnode.state.text = text;
                 m.redraw();
             }
@@ -48,7 +50,6 @@ const Home = {
 
         vnode.state.updateNumber = () => {
             vnode.state.number = numberStore.getNumber();
-            // m.redraw();
         };
     },
 
@@ -67,7 +68,6 @@ const Home = {
 
         return m('main',
             m('h1', 'Mithril w/ Flux'),
-            m(FizzBuzz),
             m('div',
                 m('strong', 'Number: '),
                 m('span', number)
@@ -85,7 +85,8 @@ const Home = {
                         decrement();
                     }
                 }, '--')
-            )
+            ),
+            m(FizzBuzz)
         );
     }
 };
