@@ -1,7 +1,12 @@
 import m from 'mithril';
 
 import numberStore from './NumberStore';
+import lastActionStore from './LastActionStore';
 import { increment, decrement } from './Actions';
+
+lastActionStore.on('lastActionUpdated', () =>
+    console.log(">>> ACTION", lastActionStore.getLastAction())
+);
 
 const FizzBuzz = {
     oninit : (vnode) => {
