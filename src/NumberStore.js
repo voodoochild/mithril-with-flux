@@ -23,11 +23,9 @@ class NumberStore extends EventEmitter {
                 break;
             default:
         }
-
-        console.log(number);
     }
 
-    get number() {
+    getNumber() {
         return number;
     }
 }
